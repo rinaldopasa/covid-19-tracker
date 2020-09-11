@@ -1,4 +1,4 @@
-var numeral = require("numeral");
+const numeral = require("numeral");
 
 const main = () => {
   const totalCases = document.querySelector("#totalCases");

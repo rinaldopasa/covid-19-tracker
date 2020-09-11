@@ -1,4 +1,4 @@
-var numeral = require("numeral");
+const numeral = require("numeral");
 
 const tableData = document.querySelector("#tableData");
 
@@ -25,15 +25,11 @@ const getCountryData = async () => {
   setCountries.sort(sortData("cases"));
   let temp = "";
   for (let item in setCountries) {
-    // console.log(setCountries[item]);
-    temp += "<tr>";
-    temp +=
-      "<td><img src=" +
-      setCountries[item].flag +
-      "> " +
-      setCountries[item].name +
-      "</td>";
-    temp += "<td>" + numeral(setCountries[item].cases).format("0,0") + "</td>";
+    temp = `
+    <tr>
+    <td><img src="${setCountries[item].flag}> ${setCountries[item].name}</td>
+    <td>${numeral(setCountries[item].cases).format('0,0')}</td>
+    </tr>`;
   }
   tableData.innerHTML = temp;
 };
