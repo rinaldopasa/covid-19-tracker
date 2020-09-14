@@ -1,36 +1,38 @@
-const path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.html$/,
-        use: ["html-loader"],
+        use: ['html-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          name: "[name]-[hash].[ext]",
-          outputPath: "images",
+          name: '[name]-[hash].[ext]',
+          outputPath: 'images',
         },
       },
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "index.html",
+      template: './src/index.html',
+      filename: 'index.html',
     }),
   ],
 };
